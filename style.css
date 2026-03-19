@@ -1,7 +1,8 @@
  
   h1 {
-    font-size: 50px;
-    
+    font-size: 90px;
+    text-align: center;
+   color: rgb(59, 56, 63);
   }
   h2 {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -15,7 +16,7 @@
   h3 {
     font-weight: bold;         /* Makes the text bold */
     text-decoration: underline; /* Adds the underline */
-   
+   font-size:20px;
   }
   p {
     font-size: 16px;
@@ -23,6 +24,8 @@
 body {
     background-blend-mode: lightblue;
 }
-p{ 
- 
+img {
+  width: 100%;       /* Expands to fill horizontal space */
+  height: auto;      /* Keeps the image from looking "squashed" */
+  max-width: 1200px; /* Optional: prevents it from getting TOO big */
 }
