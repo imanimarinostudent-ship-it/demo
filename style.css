@@ -1,13 +1,28 @@
  
   h1 {
     font-size: 50px;
+    
   }
   h2 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* This actually draws the line */
+    text-decoration: underline;
+    /* This sets the distance between the text and the line */
+    text-underline-offset: 4px; 
+    font-size:30px ;
+    text-align: center;
+  }
+  h3 {
+    font-weight: bold;         /* Makes the text bold */
+    text-decoration: underline; /* Adds the underline */
+   
   }
   p {
     font-size: 16px;
 }
 body {
-    background-color: lightblue;
+    background-blend-mode: lightblue;
+}
+p{ 
+ 
 }
