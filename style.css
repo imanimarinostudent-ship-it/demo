@@ -12,6 +12,12 @@
     text-underline-offset: 4px; 
     font-size:30px ;
     text-align: center;
+    transform: translate(10px);/* Moves the heading slightly to the right */
+    background: #8cc9e7; /* Adds a dark background to make the text pop */
+    color: rgb(214, 214, 225); /* Makes the text readable on the dark background */
+    padding: 10px; /* Adds some space around the text */
+    border-radius: 8px; /* Rounds the corners of the background */
+
   }
   h3 {
     font-weight: bold;         /* Makes the text bold */
@@ -23,6 +29,13 @@
 }
 body {
     background-blend-mode: lightblue;
+    background-color: #050505;
+    background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px);
+    background-size: 550px 550px;
+    color: white; /* Makes all text readable on the dark background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
 }
 img {
   /* General body styling to make it look cleaner */
@@ -52,3 +65,33 @@ body {
   margin: 10px 0;
 }
 }
+.planet-thumb {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 50%; /* Makes square planet images look round */
+}
+
+.planet-thumb:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    border-radius: 50%; /* Keeps the circular shape on hover */
+}
+p {
+  background: #1a1a1a;
+  padding: 15px;
+  border-left: 5px solid #00d4ff;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+p:hover {
+  transform: translateX(10px); /* Slides the fact slightly to the centre */
+  background: #252525;
+}
+.planet-card {
+    background-color: #222; /* Dark background for the box */
+    border: 2px solid white; /* White border around the box */
+    padding: 20px;           /* Space inside the box */
+    margin-bottom: 20px;     /* Space between this box and the next */
+    border-radius: 10px;    /* Rounded corners */
+}
+
