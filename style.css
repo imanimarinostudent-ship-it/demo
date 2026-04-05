@@ -44,8 +44,8 @@ body {
 
 /* The Small Images */
 .planet-thumb {
-  width: 200px;      /* Sets a specific small width */
-  height: 200px;     /* Sets a specific height */
+  width: 20%;      /* Sets a specific small width */
+  height: 20%;     /* Sets a specific height */
   object-fit: cover; /* Crops the image so it doesn't look squished */
   border-radius: 50%;/* Makes planet images circular (optional, but looks cool!) */
   display: block;    /* Puts it on its own line */
