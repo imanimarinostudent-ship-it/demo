@@ -1,97 +1,248 @@
- 
-  h1 {
-    font-size: 90px;
-    text-align: center;
-   color: rgb(59, 56, 63);
-  }
-  h2 {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    /* This actually draws the line */
-    text-decoration: underline;
-    /* This sets the distance between the text and the line */
-    text-underline-offset: 4px; 
-    font-size:30px ;
-    text-align: center;
-    transform: translate(10px);/* Moves the heading slightly to the right */
-    background: #8cc9e7; /* Adds a dark background to make the text pop */
-    color: rgb(214, 214, 225); /* Makes the text readable on the dark background */
-    padding: 10px; /* Adds some space around the text */
-    border-radius: 8px; /* Rounds the corners of the background */
-
-  }
-  h3 {
-    font-weight: bold;         /* Makes the text bold */
-    text-decoration: underline; /* Adds the underline */
-   font-size:20px;
-  }
-  p {
-    font-size: 16px;
+/* --- Global Styles --- */
+html {
+    scroll-behavior: smooth;
 }
+
 body {
-    background-blend-mode: lightblue;
     background-color: #050505;
+    /* This creates the star-field effect */
     background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px);
     background-size: 550px 550px;
-    color: white; /* Makes all text readable on the dark background */
+    color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 20px;
-}
-img {
-  /* General body styling to make it look cleaner */
-body {
-  font-family: sans-serif;
-  line-height: 1.6;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevents side-scrolling */
 }
 
-/* The Big Image */
-.hero-img {
-  width: 100%;       /* Takes up the full width of the screen */
-  height: auto;      /* Keeps the proportions correct */
-  border-radius: 10px;
-  margin-bottom: 20px;
+/* --- Navigation Bar --- */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(5px); /* Modern blurry glass effect */
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 1000;
+    border-bottom: 2px solid #333;
 }
 
-/* The Small Images */
-.planet-thumb {
-  width: 20%;      /* Sets a specific small width */
-  height: 20%;     /* Sets a specific height */
-  object-fit: cover; /* Crops the image so it doesn't look squished */
-  border-radius: 50%;/* Makes planet images circular (optional, but looks cool!) */
-  display: block;    /* Puts it on its own line */
-  margin: 10px 0;
+.navbar button {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid white;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+    font-weight: bold;
 }
+
+.navbar button:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 15px white;
 }
+
+/* --- Home Screen & Planet Cards --- */
+.hero-section, .planet-card {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+/* IMPORTANT FIX: This ensures cards stay hidden until JS shows them */
+.planet-card {
+    animation: fadeIn 0.8s ease-out;
+}
+
+h1 {
+    font-size: clamp(40px, 8vw, 80px); /* Responsive font size */
+    color: rgb(214, 214, 225);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #8cc9e7;
+    margin-bottom: 20px;
+}
+
+/* --- Weight Calculator Styling --- */
+.user-input-section {
+    background: #1a1a1a;
+    padding: 25px;
+    border: 2px solid #8cc9e7;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 0 20px rgba(140, 201, 231, 0.2);
+}
+
+input[type="number"] {
+    background: black;
+    color: #00d4ff;
+    border: 1px solid #00d4ff;
+    padding: 12px;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 8px;
+    width: 120px;
+    outline: none;
+}
+
+.weight-calculator {
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid #00d4ff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    margin: 20px 0;
+}
+
+.weight-calculator span {
+    font-size: 28px;
+    font-weight: bold;
+    color: #00d4ff;
+    text-shadow: 0 0 10px #00d4ff;
+}
+
+/* --- Planet Visuals --- */
 .planet-thumb {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 50%; /* Makes square planet images look round */
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 20px 0;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
 }
 
 .planet-thumb:hover {
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    border-radius: 50%; /* Keeps the circular shape on hover */
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
 }
+
+/* --- Individual Planet Border Colors --- */
+#mercury { border: 5px solid grey; }
+#venus   { border: 5px solid rgb(235, 235, 109); }
+#earth   { border: 5px solid aquamarine; }
+#mars    { border: 5px solid rgb(255, 166, 0); }
+#jupiter { border: 5px solid orange; }
+#saturn  { border: 5px solid rgb(255, 0, 0); }
+#uranus  { border: 5px solid rgb(0, 255, 255); }
+#neptune { border: 5px solid rgb(255, 0, 255); }
+
+/* --- Text Styling --- */
 p {
-  background: #1a1a1a;
-  padding: 15px;
-  border-left: 5px solid #00d4ff;
-  border-radius: 8px;
-  transition: 0.3s;
+    font-size: 18px;
+    background: rgba(26, 26, 26, 0.8);
+    padding: 15px;
+    border-left: 5px solid #8cc9e7;
+    border-radius: 8px;
+    transition: 0.3s;
+    width: 100%;
+    max-width: 600px;
+    margin: 10px auto; /* Centers the facts */
+    text-align: left;
 }
 
 p:hover {
-  transform: translateX(10px); /* Slides the fact slightly to the centre */
-  background: #252525;
-}
-.planet-card {
-    background-color: #222; /* Dark background for the box */
-    border: 2px solid white; /* White border around the box */
-    padding: 20px;           /* Space inside the box */
-    margin-bottom: 20px;     /* Space between this box and the next */
-    border-radius: 10px;    /* Rounded corners */
+    transform: translateX(10px);
+    background: #252525;
 }
 
+/* --- Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+.hero-img {
+    width: 100%;             /* Fills the width of its container */
+    max-width: 900px;        /* Prevents it from getting too huge on big monitors */
+    height: 50vh;            /* Sets height to 50% of the screen height */
+    object-fit: cover;       /* Crops the image intelligently so it doesn't stretch */
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(140, 201, 231, 0.3);
+    margin: 20px 0;
+}
+/* This targets the specific text "Enter your Earth weight" */
+.input-label {
+    background: none !important;      /* Removes the dark grey background */
+    border: none !important;          /* Removes the blue left border */
+    padding: 0 !important;            /* Removes the extra spacing */
+    margin: 0 0 10px 0 !important;    /* Only keeps a little space above the input box */
+    width: auto !important;           /* Stops it from stretching full width */
+    max-width: none !important; 
+    transform: none !important;       /* Stops it from moving when you hover */
+    font-size: 18px;
+    color: #8cc9e7;                   /* Keeps the nice blue color */
+    text-align: center;
+}
+
+/* This stops the "slide" effect when you hover over the input label */
+.input-label:hover {
+    transform: none !important;
+    background: none !important;
+}
+/* Targets the Input label AND the Output label inside planet cards */
+.input-label, 
+.weight-calculator p {
+    background: none !important;      /* Removes the dark grey box */
+    border: none !important;          /* Removes the blue left border */
+    padding: 0 !important;            /* Removes extra internal spacing */
+    margin: 0 0 10px 0 !important;    /* Small space below the text */
+    width: auto !important;           /* Stops it from stretching */
+    max-width: none !important; 
+    transform: none !important;       /* Stops the hover movement */
+    font-size: 18px;
+    color: #8cc9e7;                   /* Space blue color */
+    text-align: center;
+    box-shadow: none !important;      /* Removes any glow/shadow */
+}
+
+/* Stops the hover effect for both */
+.input-label:hover, 
+.weight-calculator p:hover {
+    transform: none !important;
+    background: none !important;
+}
+/* Targets the subtitle and any solar info text on the home screen */
+.subtitle, 
+.solar-info {
+    background: none !important;      /* Removes the dark grey box */
+    border: none !important;          /* Removes the blue left border */
+    padding: 10px !important;         /* Normal text spacing */
+    margin: 10px auto !important;     /* Centers the text blocks */
+    width: 80% !important;            /* Makes it readable width */
+    max-width: 800px !important;
+    transform: none !important;       /* Stops it from moving on hover */
+    font-size: 18px;
+    color: #e0e0e0;                   /* A softer white/grey color */
+    text-align: center;               /* Keeps it centered under the image */
+    line-height: 1.8;                 /* Makes long paragraphs easier to read */
+}
+
+/* Specific style for the subtitle to make it stand out slightly */
+.subtitle {
+    color: #8cc9e7;                   /* Keeps the light blue highlight */
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Ensures these tags don't react when the mouse moves over them */
+.subtitle:hover,
+.solar-info:hover {
+    transform: none !important;
+    background: none !important;
+    color: #ffffff;                   /* Slightly brightens text on hover instead of moving */
+}
